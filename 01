@@ -1,1 +1,13 @@
-sadsad 
+1. Natural Key
+실제로 어떤 개체가 갖고 있는 속성을 나타내는 컬럼이 Primary Key가 됐을 때 이를 Natural Key라고 합니다. 
+사람은 주민등록번호로 특정 인물을 식별할 수 있습니다. 
+우리가 읽는 책은 ISBN이라고 하는 번호로 특정할 수 있구요. 바로 이런 속성을 나타내는 컬럼이 Primary Key가 되면 Natural Key라고 합니다.
+
+현재 우리의 member 테이블에서는 email 컬럼이 각 회원을 식별할 수 있는 실제 속성입니다. 
+만약 제가 id 컬럼 말고 email 컬럼을 Primary Key로 설정했다면 Primary Key가 Natural Key인 겁니다. 
+하지만 저는 email 컬럼말고 id 컬럼을 Primary Key로 설정했는데요. 이에 대한 설명을 바로 이어서 할게요.
+
+2. Surrogate Key
+이건 제가 설정했던 id 컬럼같은 Primary Key를 의미합니다. 사실 id 컬럼은 어떤 회원의 속성을 직접적으로 나타내는 컬럼은 아닙니다. 
+단지 제가 Primary Key로 사용하기 위해 인위적으로 생성한 컬럼이죠. 이렇게 어떤 개체의 실제 속성은 아니지만 Primary Key로 쓰기 위해 추가한 컬럼을 Surrogate Key라고 합니다. 
+이런 Surrogate Key에는 주로 1부터 순차적으로 증가하는 숫자가 들어가게 됩니다. 잠깐 다시 member 테이블의 id 컬럼을 볼까요?

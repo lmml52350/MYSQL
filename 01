@@ -43,3 +43,5 @@ DATEDIFF(날짜 a, 날짜 b)를 사용하면 '날짜 a - 날짜 b'를 해서 그
 DATEDIFF(’2018-01-05’, ’2018-01-03’)의 값은 2입니다.
 
 그리고 이것 말고도 오늘 날짜를 기준으로 살펴보는 것도 가능한데요. 오늘 날짜를 구하는 함수는 CURDATE()입니다.
+
+SELECT * FROM member WHERE (age BETWEEN 20 AND 29) AND (MONTH(sign_up_day) = 7);

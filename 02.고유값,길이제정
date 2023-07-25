@@ -1,6 +1,6 @@
 DISTINCT() 고유값 추출
 SUBSTRING() 문자 일부만 
-응용 > DISTINCT(SUBSTRING(address, 1 2)) FROM coupang_main.menber;
+응용 > SELECT DISTINCT(SUBSTRING(address, 1 2)) FROM coupang_main.menber;
 실행시 
 경기
 서울

@@ -1,0 +1,73 @@
+SELECT gender FROM coupang_main.menber GROUP BY genader;
+gender컬럼
+m
+f
+>겉으로는 DISTINCE()와 같아보이지만 내부적으로 다름
+>m LOW속에는 gender 컬럼 값이 m인 모든 LOW들이 들어 있음
+>각각의 LOW는 하나의 그룹을 가지로 있음 
+
+SELECT 
+  gende, 
+  count(*) 
+FROM coupang_main.menber 
+GROUP BY genader;
+------------
+gender  count
+m  15
+f  9
+>그룹row개수가 아니라 그룹속의 m(15), f(9)  개수를 출력
+
+SELECT 
+  gender, count(*),  AVG(height) 
+  FROM coupang_main.menber 
+GROUP BY genader;
+---------결과---------
+gender  count height
+m  15  175.6
+f  9   166.2
+
+
+SELECT 
+  SUBSTRING(address, 1, 2) as region,  #서울시 강남구 ...  
+  gender,
+  COUNT(*)
+FROM coupang_main.menber 
+GROUP BY 
+  SUBSTRING(address, 1, 2),
+  gender;
+
+---------결과---------
+region gender count
+서울  m  6
+서울  f  1
+경기  m  3
+경기  f  3
+>주요지역과 성별의 조합을 기준으로 그루핑 됨
+
+SELECT 
+  SUBSTRING(address, 1, 2) as region,  #서울시 강남구 ...  
+  gender,
+  COUNT(*)
+FROM coupang_main.menber 
+GROUP BY 
+  SUBSTRING(address, 1, 2),
+  gender;
+HAVING   #HAVING  ~을 가지고 있는
+  region= '서울',
+  AND gender = 'm';
+
+---------결과---------
+서울  m  6
+> WHERE은 테이블에 low들을 조회떄 조건 설정
+> HAVING은 이미 조회된 low들을 다시 그루핑 했을시 생성된 그룹중에서 다시 필터링할떄 사용
+
+GROUP BY를 사용할 때는 지켜야하는 중요한 규칙이 하나 있는데요. 
+GROUP BY를 사용할 때는, SELECT 절에는
+GROUP BY 뒤에서 사용한 컬럼들 또는
+COUNT(), MAX() 등과 같은 집계 함수만쓸 수 있다는 규칙입니다. 
+이건 거꾸로 말해 GROUP BY 뒤에 쓰지 않은 컬럼 이름을 SELECT 뒤에 쓸 수는 없다는 말입니다.
+
+이때까지의 내용을 정리하자면,
+GROUP BY 절 뒤에 쓴 컬럼 이름들만, SELECT 절 뒤에도 쓸 수 있다.
+대신 SELECT 절 뒤에서 집계 함수에 그 외의 컬럼 이름을 인자로 넣는 것은 허용된다 입니다.
+
